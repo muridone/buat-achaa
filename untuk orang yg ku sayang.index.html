@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Untuk Orang Kesayanganku 🤍</title>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #1b1b2f, #0f0f1a);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 650px;
+      box-shadow: 0 0 40px rgba(255, 182, 193, 0.25);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 5px;
+      color: #ffb6c1;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 13px;
+      opacity: 0.75;
+      margin-bottom: 5px;
+    }
+
+    .song {
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.6;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    #text {
+      font-size: 16px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      background: #ffb6c1;
+      margin-left: 3px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    .btn-love {
+      display: block;
+      margin: 30px auto 0;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 117, 140, 0.6);
+    }
+
+    .heart {
+      position: fixed;
+      color: #ff7eb3;
+      font-size: 18px;
+      animation: float 4s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- 🎧 BACKGROUND MUSIC (FILE LOKAL) -->
+<audio id="bgm" loop>
+  <!-- GANTI INI DENGAN FILE MP3 MILIKMU -->
+  <source src="terbuang-dalam-waktu-barasuara.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>🤍 Untuk Orang Kesayanganku</h1>
+  <div class="subtitle">Achaa, di hari spesialmu</div>
+  <div class="song">🎵 Terbuang Dalam Waktu — Barasuara</div>
+
+  <div id="text"></div><span class="cursor"></span>
+
+  <button class="btn-love" onclick="loveAction()">🤍 Aku Sayang Kamu</button>
+</div>
+
+<script>
+const message = `Selamat ulang tahun, Achaa 🤍
+
+Hari ini aku ingin kamu tahu satu hal penting: kamu adalah seseorang yang sangat berarti.
+
+Terima kasih sudah bertahan sejauh ini.
+Aku bangga sama kamu.
+
+Selamat ulang tahun, Achaa 🤍`;
+
+let index = 0;
+const speed = 35;
+const textElement = document.getElementById("text");
+
+function typeEffect() {
+  if (index < message.length) {
+    textElement.innerHTML += message.charAt(index);
+    index++;
+    setTimeout(typeEffect, speed);
+  }
+}
+typeEffect();
+
+document.body.addEventListener("click", () => {
+  document.getElementById("bgm").play();
+}, { once: true });
+
+function loveAction() {
+  alert("Achaa 🤍\nAku sayang kamu, hari ini, besok, dan seterusnya.");
+  for (let i = 0; i < 15; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "🤍";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }
+}
+</script>
+
+</body>
+</html>
